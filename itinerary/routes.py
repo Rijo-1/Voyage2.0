@@ -7,7 +7,6 @@ itinerary_bp = Blueprint("itinerary", __name__)
 
 SERP_API_KEY = "71d4efe94f1305f8e0da34f1a7df1651560c57d021b796f33509844b9680a210"  # Your SerpAPI key
 
-
 def get_recommendation_model():
     """Instantiate the recommendation model without pickling."""
     try:
@@ -16,7 +15,6 @@ def get_recommendation_model():
     except Exception as e:
         print(f"Error creating recommendation model: {str(e)}")
         return None
-
 
 @itinerary_bp.route("/recommendations", methods=["POST"])
 @jwt_required()
