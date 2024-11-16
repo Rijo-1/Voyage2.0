@@ -345,7 +345,7 @@ def get_comprehensive_recommendations(location, budget_inr, num_people, activiti
         'gi_products': top_gi_products
     }
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     try:
         location = "Reva University, Bengaluru"
         budget_inr = 5000
