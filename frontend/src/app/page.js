@@ -32,7 +32,7 @@ export default function Home() {
           alt="bg"
         />
         <div className="absolute inset-0 bg-black opacity-15"></div>
-        <h1 className="absolute flex items-center inset-0 top-80 justify-center text-slate-700 text-4xl sm:text-6xl md:text-9xl font-semibold font-serif">
+        <h1 className="absolute flex items-center inset-0 top-80 justify-center text-slate-700 text-8xl sm:text-8xl md:text-11xl font-semibold font-serif">
           Voyage
         </h1>
         <div className="absolute left-1/2 top-96 transform -translate-x-1/2 mt-12 flex space-x-8">
