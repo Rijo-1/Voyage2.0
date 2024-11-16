@@ -86,6 +86,8 @@
 
 
 import React from "react";
+import Image from "next/image";
+import bg from "../media/japan-background-digital-art_23-2151546140.png"
 
 function SignUpPage() {
   return (
@@ -93,10 +95,10 @@ function SignUpPage() {
       <main className="flex items-center justify-between px-6 py-10 bg-slate-500 rounded-xl shadow-lg max-w-4xl w-full h-auto">
         {/* Left Image Section */}
         <div className="hidden lg:block w-1/2">
-          <img
-              src='/frontend/images/japan-background-digital-art_23-2151546140.png' // Adjusted the path
+          <Image
+              src={bg} // Adjusted the path
                alt="Sign Up Illustration"
-              className="w-full h-full object-cover rounded-lg"
+              className="w-96 h-full object-cover rounded-lg"
           />
         </div>
 
@@ -114,21 +116,12 @@ function SignUpPage() {
               <input
                 id="first-name"
                 type="text"
-                placeholder="Enter your first name"
+                placeholder="Enter your Full Name"
                 className="w-full px-4 py-4 rounded-md bg-transparent text-cyan-50 text-md focus:outline-none border-b-2 border-slate-50 focus:ring-0"
                 required
               />
             </div>
 
-            <div className="mt-4 w-full">
-              <input
-                id="last-name"
-                type="text"
-                placeholder="Enter your last name"
-                className="w-full px-4 py-4 rounded-md bg-transparent text-cyan-50 text-md focus:outline-none border-b-2 border-slate-50 focus:ring-0"
-                required
-              />
-            </div>
 
             <div className="mt-4 w-full">
               <input
@@ -158,16 +151,7 @@ function SignUpPage() {
                 required
               />
             </div>
-            <div className="flex flex-col items-start mt-6 w-full max-md:mt-4">
-              <label className="flex items-center text-white text-md max-md:text-sm">
-                <input type="checkbox" className="mr-2" />
-                I agree to the code of conduct
-              </label>
-              <label className="flex items-center text-white text-md mt-2 max-md:text-sm">
-                <input type="checkbox" className="mr-2" />
-                Join the community
-              </label>
-            </div>
+          
             <button
               type="submit"
               className="w-64 px-4 py-2 mt-6 text-black bg-white rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-gray-400"
