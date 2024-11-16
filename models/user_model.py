@@ -2,7 +2,6 @@ from flask import current_app as app
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 
-#user model has username,email,password and phone number
 class User:
     @staticmethod
     def create_user(username, email, phone, password):
