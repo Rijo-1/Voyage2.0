@@ -4,7 +4,7 @@ import Home from './components/HomePage'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginPage'
 import SignUpPage from './components/SignUpPage'
-import TravelPlanner from './components/TripPlanner'
+import TravelPlanner from './components/TravelPlanner'
 
 function page() {
   return (
