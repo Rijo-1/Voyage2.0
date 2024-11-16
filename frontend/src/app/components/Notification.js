@@ -26,7 +26,7 @@ function NotificationApp() {
     if (permission === 'granted' && areaName) {
       const interval = setInterval(() => {
         sendLocationNotification(areaName);
-      },  3600000); // Trigger every 10 seconds
+      },  10000); // Trigger every 10 seconds
 
       return () => clearInterval(interval);
     }
