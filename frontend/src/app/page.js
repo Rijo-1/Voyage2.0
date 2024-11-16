@@ -7,10 +7,10 @@ import SignUpPage from './components/SignUpPage'
 function page() {
   return (
     <div>
-      {/* <Home/> */}
-      {/* <Notification/> */}
+      <Home/>
+      <Notification/>
       {/* <LoginForm/> */}
-      <SignUpPage/>
+      {/* <SignUpPage/> */}
     </div>
   )
 }
