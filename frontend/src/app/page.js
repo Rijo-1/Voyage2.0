@@ -1,24 +1,3 @@
-// import Image from "next/image";
-// import background from "./media/background.gif";
-
-// export default function Home() {
-//   return (
-//     <>
-//       <div>
-//         <Image
-//           className="absolute h-screen w-screen"
-//           src={background}
-//           alt="bg"
-//         />
-//         <h1 className="absolute flex left-52 top-52 justify-center text-slate-700 text-4xl sm:text-6xl md:text-9xl font-semibold font-serif">
-//           Voyage
-//         </h1>
-//       <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-fixed opacity-15"></div>
-//       </div>
-//     </>
-//   );
-// }
-
 import Image from "next/image";
 import background from "./media/background.gif";
 
