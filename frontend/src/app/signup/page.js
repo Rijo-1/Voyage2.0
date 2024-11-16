@@ -357,18 +357,6 @@ function SignUpPage() {
                 required
               />
             </div>
-
-            <div className="flex flex-col items-start mt-6 w-full max-md:mt-4">
-              <label className="flex items-center text-white text-md max-md:text-sm">
-                <input type="checkbox" className="mr-2" />
-                I agree to the code of conduct
-              </label>
-              <label className="flex items-center text-white text-md mt-2 max-md:text-sm">
-                <input type="checkbox" className="mr-2" />
-                Join the community
-              </label>
-            </div>
-
             <button
               type="submit"
               className="w-64 px-4 py-2 mt-6 text-black bg-white rounded-md hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-gray-400"

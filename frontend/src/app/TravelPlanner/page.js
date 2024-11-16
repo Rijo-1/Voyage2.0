@@ -88,8 +88,9 @@ const TravelPlanner = () => {
               model: "llama3-8b-8192",
             });
 
-            // Set itinerary to the response from Groq
-            setItinerary(response.choices[0].message.content);
+            // Sanitize itinerary output to remove unwanted characters except hyphens
+            const cleanItinerary = response.choices[0].message.content.replace(/[^a-zA-Z0-9\s.,!?-]/g, "").trim();
+            setItinerary(cleanItinerary);
           } catch (error) {
             alert("Error generating itinerary: " + error.message);
           } finally {
@@ -109,46 +110,46 @@ const TravelPlanner = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center p-4">
-      <h1 className="text-3xl font-bold text-center mb-6"></h1>
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 bg-gray-100">
+      <h1 className="text-3xl font-bold text-center mb-6">Travel Itinerary Planner</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6">
         <div className="flex flex-col items-center">
-          <label className="mb-2">Budget (INR)</label>
+          <label className="mb-2 text-lg font-medium">Budget (INR)</label>
           <input
             type="number"
             name="budget"
             value={formData.budget}
             onChange={handleInputChange}
-            className="p-2 border border-gray-300 rounded mb-4"
+            className="p-3 w-full md:w-2/3 border border-gray-300 rounded-lg mb-4 text-lg"
             placeholder="Enter budget in INR"
           />
 
-          <label className="mb-2">Group Size</label>
+          <label className="mb-2 text-lg font-medium">Group Size</label>
           <input
             type="number"
             name="groupSize"
             value={formData.groupSize}
             onChange={handleInputChange}
-            className="p-2 border border-gray-300 rounded mb-4"
+            className="p-3 w-full md:w-2/3 border border-gray-300 rounded-lg mb-4 text-lg"
           />
 
-          <label className="mb-2">Activities (comma-separated)</label>
+          <label className="mb-2 text-lg font-medium">Activities (comma-separated)</label>
           <input
             type="text"
             name="activities"
             value={formData.activities}
             onChange={handleInputChange}
-            className="p-2 border border-gray-300 rounded mb-4"
+            className="p-3 w-full md:w-2/3 border border-gray-300 rounded-lg mb-4 text-lg"
             placeholder="Enter activities (e.g., museums, parks)"
           />
 
-          <label className="mb-2">Food Preferences</label>
+          <label className="mb-2 text-lg font-medium">Food Preferences</label>
           <select
             name="foodPreferences"
             value={formData.foodPreferences}
             onChange={handleInputChange}
-            className="p-2 border border-gray-300 rounded mb-4"
+            className="p-3 w-full md:w-2/3 border border-gray-300 rounded-lg mb-4 text-lg"
           >
             <option value="veg">Vegetarian</option>
             <option value="non-veg">Non-Vegetarian</option>
@@ -156,7 +157,7 @@ const TravelPlanner = () => {
 
           <button
             type="submit"
-            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             disabled={loading}
           >
             {loading ? "Generating..." : "Generate Itinerary"}
@@ -166,7 +167,7 @@ const TravelPlanner = () => {
 
       {showOverlay && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-11/12 max-w-lg">
+          <div className="bg-white p-6 rounded-lg w-11/12 max-w-lg shadow-lg">
             <h3 className="text-2xl font-semibold mb-4">Your Personalized Itinerary</h3>
 
             {/* Display location in the overlay */}
@@ -176,10 +177,11 @@ const TravelPlanner = () => {
             <p className="text-lg mb-4"><strong>Budget:</strong> ₹{formData.budget}</p>
 
             <div className="max-h-80 overflow-y-auto">
-              <pre className="whitespace-pre-wrap">{itinerary}</pre>
+              <pre className="whitespace-pre-wrap text-lg">{itinerary}</pre>
             </div>
+
             <button
-              className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
               onClick={() => setShowOverlay(false)}
             >
               Close
