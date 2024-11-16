@@ -10,7 +10,6 @@ function page() {
   return (
     <div>
       <Home/>
-      <Notification/>
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
       {/* <TravelPlanner/> */}

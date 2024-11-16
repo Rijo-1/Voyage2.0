@@ -350,7 +350,12 @@ function NotificationApp() {
 
   useEffect(() => {
     if (permission === 'granted') {
+    if (permission === 'granted') {
       const interval = setInterval(() => {
+        if (areaName) {
+          sendLocationNotification(areaName);
+        }
+      }, 10000); // Trigger every 10 seconds
         if (areaName) {
           sendLocationNotification(areaName);
         }
@@ -358,6 +363,7 @@ function NotificationApp() {
 
       return () => clearInterval(interval);
     }
+  }, [permission, areaName]);
   }, [permission, areaName]);
 
   const requestPermission = () => {
@@ -406,6 +412,14 @@ function NotificationApp() {
     } catch (error) {
       console.error('Error generating pickup line:', error);
       return 'Hey there! Check out what’s happening around you!';
+    }
+  };
+
+  const handleLocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log('Geolocation not supported');
     }
   };
 
