@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // Groq SDK initialization
 import Groq from "groq-sdk";
+import NotificationApp from "../components/Notification";
 
 // Initialize Groq client with the API key directly in the frontend (be mindful of security)
 const groq = new Groq({
@@ -117,6 +118,7 @@ const TravelPlanner = () => {
           </div>
           <ul className="flex items-center space-x-6 text-lg">
             <div className="relative group">
+              <NotificationApp/>
               <button className="hover:text-slate-400 cursor-pointer">
                 Log Out
               </button>
