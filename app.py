@@ -14,12 +14,13 @@ app.config.from_object(Config)
 mongo = PyMongo(app)
 jwt = JWTManager(app)
 
-CORS(app)
+CORS(app)  
 
 app.mongo = mongo
 
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(itinerary_bp, url_prefix="/itinerary")
+
 
 def unpickle_model(file_path, serp_api_key):
     """
@@ -31,13 +32,11 @@ def unpickle_model(file_path, serp_api_key):
     return model
 
 
-
 @app.route("/get_recommendations", methods=["POST"])
 def get_recommendations():
     """
     Get restaurant recommendations based on user input (location, budget, food preference).
     """
-    
     data = request.get_json()
 
     location = data.get("location", "")
@@ -46,11 +45,17 @@ def get_recommendations():
         "food_preference", "veg"
     )  
 
-    
-    serp_api_key = "your_serp_api_key"  
+    serp_api_key = "your_serp_api_key"  # You can also load this from a secure config or environment variable
+
+    # Unpickle the model
     model = unpickle_model("recommendation_model.pkl", serp_api_key)
+
+    # Get recommendations from the model
     top_restaurants = model.get_recommendations(location, budget_inr, food_preference)
+
+    # Convert the dataframe to a list of dictionaries for the response
     recommendations = top_restaurants.to_dict(orient="records")
+
     return jsonify(recommendations)
 
 
