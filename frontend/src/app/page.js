@@ -8,9 +8,9 @@ function page() {
   return (
     <div>
       {/* <Home/> */}
-      {/* <Notification/> */}
+      <Notification/>
       {/* <LoginForm/> */}
-      <SignUpPage/>
+      {/* <SignUpPage/> */}
     </div>
   )
 }
