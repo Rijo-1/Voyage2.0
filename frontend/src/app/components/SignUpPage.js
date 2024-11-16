@@ -2,7 +2,7 @@ import React from "react";
 
 function SignUpPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-800">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <main className="flex items-center justify-center px-6 py-10 bg-slate-500 rounded-xl shadow-lg max-w-md w-full h-auto max-md:h-auto">
         <form className="w-full flex flex-col items-center">
           <h1 className="text-4xl font-bold text-white text-center">Sign Up</h1>
