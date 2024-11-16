@@ -2,24 +2,17 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
-// Groq SDK initialization
-import Groq from "groq-sdk";
-const groq = new Groq({
-  apiKey: "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",  // Ensure to protect your API key
-  dangerouslyAllowBrowser: true,
-});
-
 const TravelPlanner = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [itinerary, setItinerary] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);  // To handle errors
-  const [location, setLocation] = useState("");  // To store the location name
+  const [error, setError] = useState(null);
+  const [location, setLocation] = useState("");
   const [formData, setFormData] = useState({
     budget: 0,
     groupSize: 0,
     activities: "",
-    foodPreferences: "",
+    foodPreferences: "veg",
   });
 
   const router = useRouter();
@@ -46,20 +39,17 @@ const TravelPlanner = () => {
     // Remove JWT token from localStorage (or sessionStorage)
     localStorage.removeItem("access_token");
 
-    // Optionally, you can also remove any user-specific data here
-
     // Redirect the user to the login page
     router.push("/login");
   };
 
   const getLocationFromCoordinates = async (lat, lng) => {
-    const mapboxApiKey = "pk.eyJ1IjoibW9oaXRobjIwMDQiLCJhIjoiY20zYWo4bTZvMHZzZzJpc2E1dXB2a2I0MyJ9.PNiLG3Jvl628G4TwrTHO-g";  // Add your Mapbox API key here
+    const mapboxApiKey = "pk.eyJ1IjoibW9oaXRobjIwMDQiLCJhIjoiY20zYWo4bTZvMHZzZzJpc2E1dXB2a2I0MyJ9.PNiLG3Jvl628G4TwrTHO-g";
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${mapboxApiKey}`;
 
     try {
       const response = await fetch(url);
       const data = await response.json();
-      // Extract the location name from the response
       const location = data.features && data.features.length > 0 ? data.features[0].place_name : "Unknown Location";
       return location;
     } catch (error) {
@@ -83,42 +73,45 @@ const TravelPlanner = () => {
           const locationName = await getLocationFromCoordinates(latitude, longitude);
           setLocation(locationName);  // Set the location
 
-          // Get the current device time (in local timezone) and convert to IST
-          const now = new Date();
-          const utcTime = now.getTime() + now.getTimezoneOffset() * 60000;  // Convert to UTC time
-          const istTime = new Date(utcTime + 5.5 * 3600000);  // Adjust to IST (UTC+5:30)
+          // Prepare data for API call
+          const requestData = {
+            location: locationName,
+            budget: { amount: formData.budget },
+            num_people: formData.groupSize,
+            food_preference: formData.foodPreferences,
+            activities: formData.activities.split(',').map(item => item.trim()),
+          };
 
-          const formattedTime = Math.floor(istTime.getTime() / 1000);  // Convert to seconds
-
-          // Continue with the itinerary request using the fetched location and time
           try {
-            const response = await groq.chat.completions.create({
-              messages: [
-                {
-                  role: "user",
-                  content: `Generate an itinerary for the next 6 hours based on the following parameters: 
-                    - Current time: ${formattedTime}
-                    - Budget: ${formData.budget}
-                    - Group size: ${formData.groupSize}
-                    - Location: ${locationName}
-                    - Activities: ${formData.activities}
-                    - Food preferences: ${formData.foodPreferences}`,
-                },
-              ],
-              model: "llama3-8b-8192",
+            // Send data to the backend
+            const response = await fetch("/api/recommendations", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("access_token")}`,
+              },
+              body: JSON.stringify(requestData),
             });
 
-            // Sanitize itinerary output to remove unwanted characters except hyphens
-            const cleanItinerary = response.choices[0].message.content.replace(/[^a-zA-Z0-9\s.,!?-]/g, "").trim();
-            setItinerary(cleanItinerary);
+            if (!response.ok) {
+              throw new Error('Failed to fetch recommendations');
+            }
+
+            const recommendations = await response.json();
+
+            // Convert JSON to readable text
+            const formattedItinerary = recommendations.recommendations
+              .map((item) => `${item.name}: ${item.description}`)
+              .join("\n\n");
+
+            setItinerary(formattedItinerary);
           } catch (error) {
-            alert("Error generating itinerary: " + error.message);
+            setError("Error fetching recommendations: " + error.message);
           } finally {
             setLoading(false);
           }
         },
         (error) => {
-          // Handle error, e.g. location access denied
           setError("Unable to retrieve your location. Please enable location services.");
           setLoading(false);
         }
