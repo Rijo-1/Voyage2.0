@@ -13,19 +13,24 @@ function NotificationApp() {
     dangerouslyAllowBrowser: true,
   });
 
+  // Automatically fetch location on component mount
   useEffect(() => {
-    if (permission === 'granted') {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      console.log('Geolocation not supported');
+    }
+  }, []); // Empty dependency array ensures it runs once when the component mounts
+
+  useEffect(() => {
+    if (permission === 'granted' && areaName) {
       const interval = setInterval(() => {
-        if (areaName) {
-          sendLocationNotification(areaName);
-        } else {
-          sendGeneralNotification();
-        }
-      }, 2 * 60 * 1000);
+        sendLocationNotification(areaName);
+      },  3600000); // Trigger every 10 seconds
 
       return () => clearInterval(interval);
     }
-  }, [permission, areaName]);
+  }, [permission, areaName]); // Trigger when permission and areaName are updated
 
   const requestPermission = () => {
     if ('Notification' in window) {
@@ -39,14 +44,6 @@ function NotificationApp() {
       });
     } else {
       alert('Desktop notifications are not supported in this browser.');
-    }
-  };
-
-  const sendGeneralNotification = () => {
-    if (permission === 'granted') {
-      new Notification('Reminder!', {
-        body: 'This is a general notification sent every 2 minutes!', 
-      });
     }
   };
 
@@ -68,7 +65,7 @@ function NotificationApp() {
         messages: [
           {
             role: 'user',
-            content: `Generate a funny and clean pickup line related to ${location}. Keep it short and casual.`,
+            content: `Generate a short note based on any local events happening at the ${location} nearby, like festivals, markets, or concerts. Or Generate a funny and clean pickup line without any intro or so related to ${location}. Keep it short upto 10 words and casual and donot include ay intro or so and any headings and be precise and straight upto the point and generate any one out of the two options randomly and show what you wanted to and never show any kind of confirmatory headings.`,
           },
         ],
         model: 'llama3-8b-8192',
@@ -81,14 +78,6 @@ function NotificationApp() {
     } catch (error) {
       console.error('Error generating pickup line:', error);
       return 'Hey there! Check out what’s happening around you!';
-    }
-  };
-
-  const handleLocationClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      console.log('Geolocation not supported');
     }
   };
 
@@ -116,7 +105,7 @@ function NotificationApp() {
   };
 
   return (
-    <>
+    <>  
     </>
   );
 }

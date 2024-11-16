@@ -9,11 +9,11 @@ import TravelPlanner from './components/TravelPlanner'
 function page() {
   return (
     <div>
-      <Home/>
-      {/* <Notification/> */}
+      {/* <Home/> */}
+      <Notification/>
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
-      {/* <TravelPlanner/> */}
+      <TravelPlanner/>
     </div>
   )
 }
