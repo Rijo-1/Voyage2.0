@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // Groq SDK initialization
 import Groq from "groq-sdk";
+import NotificationApp from "../components/Notification";
 
 // Initialize Groq client with the API key directly in the frontend (be mindful of security)
 const groq = new Groq({
@@ -87,8 +88,6 @@ const TravelPlanner = () => {
               ],
               model: "llama3-8b-8192",
             });
-
-            // Sanitize itinerary output to remove unwanted characters except hyphens
             const cleanItinerary = response.choices[0].message.content.replace(/[^a-zA-Z0-9\s.,!?-]/g, "").trim();
             setItinerary(cleanItinerary);
           } catch (error) {
@@ -98,7 +97,6 @@ const TravelPlanner = () => {
           }
         },
         (error) => {
-          // Handle error, e.g. location access denied
           setError("Unable to retrieve your location. Please enable location services.");
           setLoading(false);
         }
@@ -164,16 +162,13 @@ const TravelPlanner = () => {
           </button>
         </div>
       </form>
+      <NotificationApp/>
 
       {showOverlay && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-11/12 max-w-lg shadow-lg">
             <h3 className="text-2xl font-semibold mb-4">Your Personalized Itinerary</h3>
-
-            {/* Display location in the overlay */}
             <p className="text-lg mb-4"><strong>Location:</strong> {location}</p>
-
-            {/* Display budget in INR */}
             <p className="text-lg mb-4"><strong>Budget:</strong> ₹{formData.budget}</p>
 
             <div className="max-h-80 overflow-y-auto">
