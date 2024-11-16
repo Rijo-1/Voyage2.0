@@ -109,7 +109,7 @@ const TravelPlanner = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Travel Itinerary Planner</h1>
+      <h1 className="text-3xl font-bold text-center mb-6"></h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col items-center">
