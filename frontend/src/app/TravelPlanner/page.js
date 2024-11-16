@@ -110,8 +110,21 @@ const TravelPlanner = () => {
   };
 
   return (
+    <>
+    <nav className="flex justify-between items-center px-6 py-4 bg-slate-800 text-white fixed w-full z-10">
+          <div className="text-3xl font-bold font-serif cursor-pointer">
+            Voyage
+          </div>
+          <ul className="flex items-center space-x-6 text-lg">
+            <div className="relative group">
+              <button className="hover:text-slate-400 cursor-pointer">
+                Log Out
+              </button>
+            </div>
+          </ul>
+        </nav>
     <div className="min-h-screen flex flex-col justify-center items-center p-4 bg-gray-100">
-      <h1 className="text-3xl font-bold text-center mb-6">Travel Itinerary Planner</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">Welcome To The New Era Of Travelling!</h1>
 
       <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-6">
         <div className="flex flex-col items-center">
@@ -190,6 +203,7 @@ const TravelPlanner = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

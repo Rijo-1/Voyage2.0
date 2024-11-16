@@ -11,8 +11,8 @@ auth_bp = Blueprint("auth", __name__)
 CORS(auth_bp)
 # CORS(itinerary_bp)
 
-with open("recommendation_model.pkl", "rb") as f:
-    recommendation_model = pickle.load(f)
+# with open("recommendation_model.pkl", "rb") as f:
+#     recommendation_model = pickle.load(f)
 
 GROQ_API_URL = "https://groqapi.example.com/create_itinerary"
 GROQ_API_KEY = "your_groq_api_key"

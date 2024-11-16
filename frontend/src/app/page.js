@@ -9,11 +9,11 @@ import TravelPlanner from './TravelPlanner/page'
 function page() {
   return (
     <div>
-      {/* <Home/> */}
+      <Home/>
       <Notification/>
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
-      <TravelPlanner/>
+      {/* <TravelPlanner/> */}
     </div>
   )
 }
