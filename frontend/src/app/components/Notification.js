@@ -350,12 +350,7 @@ function NotificationApp() {
 
   useEffect(() => {
     if (permission === 'granted') {
-    if (permission === 'granted') {
       const interval = setInterval(() => {
-        if (areaName) {
-          sendLocationNotification(areaName);
-        }
-      }, 10000); // Trigger every 10 seconds
         if (areaName) {
           sendLocationNotification(areaName);
         }
@@ -363,7 +358,6 @@ function NotificationApp() {
 
       return () => clearInterval(interval);
     }
-  }, [permission, areaName]);
   }, [permission, areaName]);
 
   const requestPermission = () => {
@@ -399,7 +393,7 @@ function NotificationApp() {
         messages: [
           {
             role: 'user',
-            content: `Generate a small note on nearby local events happening nearby ${location} based on the date and time, markets, or concerts. Or any funny and clean pickup line related to ${location}. Keep it short and casual.`,
+            content: `Generate a funny and clean pickup line related to ${location}. Keep it short and casual.`,
           },
         ],
         model: 'llama3-8b-8192',
@@ -412,14 +406,6 @@ function NotificationApp() {
     } catch (error) {
       console.error('Error generating pickup line:', error);
       return 'Hey there! Check out what’s happening around you!';
-    }
-  };
-
-  const handleLocationClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      console.log('Geolocation not supported');
     }
   };
 
@@ -456,7 +442,7 @@ function NotificationApp() {
 
   return (
     <>
-      <button onClick={handleLocationClick}>Get Notifications</button>
+      <button onClick={handleLocationClick}>Get Location</button>
     </>
   );
 }
