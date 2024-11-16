@@ -236,10 +236,15 @@ function NotificationApp() {
   useEffect(() => {
     if (permission === 'granted') {
       const interval = setInterval(() => {
+<<<<<<< HEAD
         if (areaName) {
           sendLocationNotification(areaName);
         }
       }, 10000); // Trigger every 10 seconds
+=======
+        sendLocationNotification(areaName);
+      },  10000); // Trigger every 10 seconds
+>>>>>>> 505287d3ca6511831062b584c11ccd0064bccabc
 
       return () => clearInterval(interval);
     }
