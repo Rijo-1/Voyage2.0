@@ -1,16 +1,19 @@
+'use client'
 import React from 'react'
 import Home from './components/HomePage'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginPage'
 import SignUpPage from './components/SignUpPage'
+import TravelPlanner from './components/TripPlanner'
 
 function page() {
   return (
     <div>
-      <Home/>
+      {/* <Home/> */}
       {/* <Notification/> */}
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
+      <TravelPlanner/>
     </div>
   )
 }
