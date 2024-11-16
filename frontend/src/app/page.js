@@ -7,7 +7,7 @@ import SignUpPage from './components/SignUpPage'
 function page() {
   return (
     <div>
-      {/* <Home/> */}
+      <Home/>
       <Notification/>
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
