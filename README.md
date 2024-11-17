@@ -1,3 +1,7 @@
+Here's your updated `README.md` file with GitHub profiles added for the contributors:
+
+---
+
 # 🚢 Voyage 
 
 **HackAttack WebDev** is a cutting-edge full-stack web application designed to provide users with AI-driven travel recommendations. Whether you're a local explorer or a tourist, this platform uses advanced APIs like **SerpAPI** and **Groq** to personalize recommendations based on your preferences, including activities, hotels, and restaurants.
@@ -145,9 +149,9 @@ Save your favorite travel links and recommendations for quick access.
 
 ## 👥 Contributors
 
-- **Mohith**
-- **Sandeep Kumar**
-- **Pavan C Shekar**
+- **[Mohith](https://github.com/mohithn2004)**
+- **[Sandeep Kumar](https://github.com/sandyyman)**
+- **[Pavan C Shekar](https://github.com/pavancshekar)**
 
 ---
 
@@ -163,4 +167,4 @@ For more information or to get involved in the project, feel free to reach out! 
 
 ---
 
-This version adds a cleaner structure with more sections to improve readability and appeal. The use of emojis and headings makes it easy to scan through, and the screenshots section now has clear descriptions to make it even more engaging.
+This version adds GitHub profile links to the contributors section, making it easy for others to find and connect with you directly on GitHub.
