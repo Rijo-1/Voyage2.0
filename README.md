@@ -165,4 +165,4 @@ For more information or to get involved in the project, feel free to reach out! 
 
 ---
 
-This version adds GitHub profile links to the contributors section, making it easy for others to find and connect with you directly on GitHub.
+
