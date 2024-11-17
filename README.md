@@ -102,7 +102,7 @@ Your frontend will be available on [http://localhost:3000](http://localhost:3000
 ## 📸 Screenshots
 
 ### Homepage
-![Homepage](ss/homepage.png)
+![Homepage](ss/home.png)
 
 Explore the homepage where users can begin their travel planning journey.
 
