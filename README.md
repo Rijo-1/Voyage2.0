@@ -1,6 +1,4 @@
-Here's your updated `README.md` file with GitHub profiles added for the contributors:
 
----
 
 # 🚢 Voyage 
 
