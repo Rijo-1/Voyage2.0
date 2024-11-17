@@ -153,11 +153,7 @@ Save your favorite travel links and recommendations for quick access.
 
 ---
 
-## 💻 License
 
-This project is licensed under the MIT License.
-
----
 
 ## 🔥 Let's Connect!
 
