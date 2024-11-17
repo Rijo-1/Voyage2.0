@@ -5,6 +5,8 @@ import Notification from './components/Notification'
 import LoginForm from './components/LoginPage'
 import SignUpPage from './components/SignUpPage'
 import TravelPlanner from './TravelPlanner/page'
+import TestSpline from './components/testSpline'
+
 
 function page() {
   return (
@@ -13,6 +15,7 @@ function page() {
       {/* <LoginForm/> */}
       {/* <SignUpPage/> */}
       {/* <TravelPlanner/> */}
+      {/* <TestSpline/> */}
     </div>
   )
 }

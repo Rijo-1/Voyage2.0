@@ -442,7 +442,12 @@ function NotificationApp() {
 
   return (
     <>
-      <button onClick={handleLocationClick}>Get Location</button>
+      <button 
+        onClick={handleLocationClick}
+        className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+      >
+        Get Location
+      </button>
     </>
   );
 }
