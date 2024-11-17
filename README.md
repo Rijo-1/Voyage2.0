@@ -116,7 +116,7 @@ The login page where users can access their personalized travel recommendations.
 ---
 
 ### Sign-up Page
-![Sign-up](screenshots/signup.png)
+![Sign-up](ss/signup.png)
 
 Create a new account to get started with personalized recommendations.
 
