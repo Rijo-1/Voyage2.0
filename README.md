@@ -1,6 +1,5 @@
-# Voyage
+# 🚢 Voyage 
 
-![Logo](https://via.placeholder.com/150) 
 **HackAttack WebDev** is a cutting-edge full-stack web application designed to provide users with AI-driven travel recommendations. Whether you're a local explorer or a tourist, this platform uses advanced APIs like **SerpAPI** and **Groq** to personalize recommendations based on your preferences, including activities, hotels, and restaurants.
 
 ---
@@ -103,14 +102,14 @@ Your frontend will be available on [http://localhost:3000](http://localhost:3000
 ## 📸 Screenshots
 
 ### Homepage
-![Homepage](screenshots/homepage.png)
+![Homepage](ss/homepage.png)
 
 Explore the homepage where users can begin their travel planning journey.
 
 ---
 
 ### Login Page
-![Login](screenshots/login.png)
+![Login](ss/login.png)
 
 The login page where users can access their personalized travel recommendations.
 
@@ -124,21 +123,21 @@ Create a new account to get started with personalized recommendations.
 ---
 
 ### Output Page
-![Output](screenshots/output.png)
+![Output](ss/output.png)
 
 Receive tailored recommendations based on your inputs.
 
 ---
 
 ### Notifications
-![Notifications](screenshots/notification.png)
+![Notifications](ss/notification.png)
 
 Get notified about your saved recommendations and updates.
 
 ---
 
 ### Bookmark Page
-![Bookmark](screenshots/bookmark.png)
+![Bookmark](ss/bookmark.png)
 
 Save your favorite travel links and recommendations for quick access.
 
