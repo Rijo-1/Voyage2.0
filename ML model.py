@@ -4,7 +4,7 @@ from textblob import TextBlob
 import re
 
 
-SERP_API_KEY = '71d4efe94f1305f8e0da34f1a7df1651560c57d021b796f33509844b9680a210'
+SERP_API_KEY = 'API_KEY'
 
 def analyze_sentiment(review):
     try:
