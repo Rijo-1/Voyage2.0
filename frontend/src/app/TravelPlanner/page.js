@@ -17,15 +17,15 @@ import {
 } from "lucide-react";
 
 const groq = new Groq({
-  apiKey: "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",
+  apiKey: "API_KEY",
   dangerouslyAllowBrowser: true,
 });
 
 const sentiment = new Sentiment();
 const serpAPIKey =
-  "c93c565fe1ee63a071a57c5200d01ff2c9e06f293c0a57858724b52fafe701c7";
+  "API_KEY";
 const mapboxToken =
-  "pk.eyJ1IjoibW9oaXRobjIwMDQiLCJhIjoiY20zYWo4bTZvMHZzZzJpc2E1dXB2a2I0MyJ9.PNiLG3Jvl628G4TwrTHO-g";
+  "API_KEY";
 
 const INITIAL_FORM_STATE = {
   location: "",
