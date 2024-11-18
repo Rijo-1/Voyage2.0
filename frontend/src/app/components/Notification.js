@@ -9,7 +9,7 @@ function NotificationApp() {
   const [notification, setNotification] = useState(null);
 
   const groq = new Groq({
-    apiKey: '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',
+    apiKey: 'API_KEY',
     dangerouslyAllowBrowser: true,
   });
 
