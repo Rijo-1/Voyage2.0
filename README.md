@@ -2,7 +2,7 @@
 
 # 🚢 Voyage 
 
-**HackAttack WebDev** is a cutting-edge full-stack web application designed to provide users with AI-driven travel recommendations. Whether you're a local explorer or a tourist, this platform uses advanced APIs like **SerpAPI** and **Groq** to personalize recommendations based on your preferences, including activities, hotels, and restaurants.
+**Voyage** is a cutting-edge full-stack web application designed to provide users with AI-driven travel recommendations. Whether you're a local explorer or a tourist, this platform uses advanced APIs like **SerpAPI** and **Groq** to personalize recommendations based on your preferences, including activities, hotels, and restaurants.
 
 ---
 
